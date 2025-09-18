@@ -1,0 +1,3 @@
+*.session       # Session files
+.env            # Environment variables (DON'T COMMIT THIS)
+__pycache__     # 
