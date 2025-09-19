@@ -1,0 +1,24 @@
+services:
+- type: web
+  name: sic-chatbot  # Name your service (e.g., "CareHaven Bot")
+  env: python
+  buildCommand: pip install -r requirements.txt
+  startCommand: python main.py
+  envVars:
+    - key: TELEGRAM_BOT_TOKEN
+      fromDatabase:
+        name: sic-chatbot-env
+        property: telegram-bot-token
+    - key: WEBHOOK_URL
+      value: https://telegram-sic-bot.onrender.com/webhook  # Update after deployment
+    - key: GEMINI_API_KEY
+      fromDatabase:
+        name: sic-chatbot-env
+        property: gemini-api-key
+    - key: PORT
+      value: 10000
+  regions:
+    - singapore  # Choose a region close to your users
+  plan: free
+  healthCheckPath: /webhook
+  autoDeploy: true
