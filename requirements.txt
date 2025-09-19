@@ -1,5 +1,5 @@
 python-telegram-bot==20.7  # Latest stable version as of 2025; supports async
 google-generativeai==0.7.2  # Compatible with gemini-2.5-flash; check latest
 cryptography==43.0.0  # Stable version for Fernet; supports Python 3.8+
-sqlitecloud==1.0.0  # Adjust based on your version; check sqlitecloud.org
-python-dotenv==1.0.1  # Latest for .env file loading
+sqlitecloud==0.0.83  # Adjust based on your version; check sqlitecloud.org
+python-dotenv==1.0.0  # Latest for .env file loading
