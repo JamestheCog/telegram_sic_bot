@@ -1,3 +1,5 @@
-*.session       # Session files
-.env            # Environment variables (DON'T COMMIT THIS)
-__pycache__     # 
+__pycache__         
+__init__.py
+unused
+.env
+logger/user_data/*.json
