@@ -5,7 +5,7 @@ Contains handler functions (to be attached to the bot's handlers in the main app
 import google.generativeai as genai
 import os, time, random, datetime
 from logger.bot_data import bot_data
-from telegram import ChatAction
+from telegram.constants import ChatAction
 from utils.messages import PREDEFINED_MESSAGES, load_base_prompt, store_message_in_cloud, HELP_COMMANDS
 
 async def start_conversation(update, context):
