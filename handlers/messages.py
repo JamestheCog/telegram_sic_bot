@@ -5,6 +5,7 @@ Contains handler functions (to be attached to the bot's handlers in the main app
 import google.generativeai as genai
 import os, time, random, datetime
 from logger.bot_data import bot_data
+from telegram import ChatAction
 from utils.messages import PREDEFINED_MESSAGES, load_base_prompt, store_message_in_cloud, HELP_COMMANDS
 
 async def start_conversation(update, context):
@@ -50,4 +51,5 @@ async def respond(update, context):
             user_logger.log_message(response.text, 'model')
             store_message_in_cloud(user_logger.conversation_id, response.text, 'model', datetime.datetime.now())
             break
+    await context.bot.send_chat_action(chat_id = user_id, action = ChatAction.TYPING)
     await update.message.reply_text(response.text)
