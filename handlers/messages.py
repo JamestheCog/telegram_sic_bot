@@ -37,6 +37,7 @@ async def respond(update, context):
     user_logger = bot_data.get_logger(user_id)
     if not len(user_logger.messages):
         user_logger.log_message(load_base_prompt(), 'user')
+    await context.bot.send_chat_action(chat_id = user_id, action = ChatAction.TYPING)
     genai.configure(api_key = os.getenv('GEMINI_API_KEY'))
     chat_model = genai.GenerativeModel('gemini-2.5-flash')
     user_logger.log_message(update.message.text, 'user')
@@ -51,5 +52,4 @@ async def respond(update, context):
             user_logger.log_message(response.text, 'model')
             store_message_in_cloud(user_logger.conversation_id, response.text, 'model', datetime.datetime.now())
             break
-    await context.bot.send_chat_action(chat_id = user_id, action = ChatAction.TYPING)
     await update.message.reply_text(response.text)
